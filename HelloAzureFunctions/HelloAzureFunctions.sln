@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.808.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAzureFunctions", "HelloAzureFunctions\HelloAzureFunctions.csproj", "{11C4563A-04C0-4690-B7F2-13C12940CC6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAzureFunctionsTests", "HelloAzureFunctionsTests\HelloAzureFunctionsTests.csproj", "{096B2400-790C-4AC2-9A6F-F6186628D54F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{11C4563A-04C0-4690-B7F2-13C12940CC6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11C4563A-04C0-4690-B7F2-13C12940CC6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11C4563A-04C0-4690-B7F2-13C12940CC6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{096B2400-790C-4AC2-9A6F-F6186628D54F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{096B2400-790C-4AC2-9A6F-F6186628D54F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{096B2400-790C-4AC2-9A6F-F6186628D54F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{096B2400-790C-4AC2-9A6F-F6186628D54F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
