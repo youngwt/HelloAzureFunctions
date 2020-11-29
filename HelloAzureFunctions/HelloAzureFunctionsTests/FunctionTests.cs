@@ -1,11 +1,14 @@
 using System;
-using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Internal;
 using Moq;
+using Newtonsoft.Json;
 using NUnit.Framework;
 
 namespace HelloAzureFunctionsTests
@@ -27,11 +30,12 @@ namespace HelloAzureFunctionsTests
             Assert.Pass();
         }
 
-        [Test]
-        public async Task AzureFunctionReturnsOk()
+        [TestCase("", "Did not serialise the request correctly. No zen for you today")]
+        [TestCase("Responsive is better than fast", "Responsive is better than fast")]
+        public async Task AzureFunction_TestZenMessage(string zen, string expected)
         {
             // Arrange
-            var request = CreateHttpRequest();
+            var request = CreateHttpRequest(zen);
 
             // the following log mock verification code was from an answer from SO
             // https://stackoverflow.com/questions/52707702/how-do-you-mock-ilogger-loginformation
@@ -60,16 +64,36 @@ namespace HelloAzureFunctionsTests
             var response = (OkObjectResult) await HelloAzureFunctions.HelloAzureFunctions.Run(request, _logger.Object);
 
             // Assert
-            Assert.That(response.Value, Is.EqualTo("Reports Ok"));
+            Assert.That(response.Value, Is.EqualTo(expected));
             Assert.IsTrue("My first Azure functions end point has been called!".Equals(logMessage));
 
         }
 
-        private HttpRequest CreateHttpRequest()
+        private HttpRequest CreateHttpRequest(string zen = "")
         {
             var context = new DefaultHttpContext();
             var request = context.Request;
+
+            if(!string.IsNullOrEmpty(zen))
+            {
+                var root = new Root();
+                root.zen = zen;
+
+                request.Body = SerializeToStream(root);
+            }
+
+
             return request;
+        }
+
+        private MemoryStream SerializeToStream(object o)
+        {
+            var jsonString = JsonConvert.SerializeObject(o);
+
+            byte[] byteArray = Encoding.ASCII.GetBytes(jsonString);
+            MemoryStream stream = new MemoryStream(byteArray);
+
+            return stream;
         }
 
     }

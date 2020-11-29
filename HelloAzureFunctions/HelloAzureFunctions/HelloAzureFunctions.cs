@@ -19,12 +19,16 @@ namespace HelloAzureFunctions
             log.LogInformation("My first Azure functions end point has been called!");
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
 
-            string responseMessage = 
-                "Reports Ok";
+            Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(requestBody);
+
+            string responseMessage = myDeserializedClass == null ?
+                "Did not serialise the request correctly. No zen for you today" :
+                myDeserializedClass.zen;
 
             return new OkObjectResult(responseMessage);
         }
     }
 }
+
+
