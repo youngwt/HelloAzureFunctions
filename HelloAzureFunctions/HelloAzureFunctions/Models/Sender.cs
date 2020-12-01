@@ -1,7 +1,4 @@
-﻿using System;
-
-[Serializable]
-public class Sender
+﻿public class Sender
 {
     public string login { get; set; }
     public int id { get; set; }
@@ -22,5 +19,7 @@ public class Sender
     public string type { get; set; }
     public bool site_admin { get; set; }
 }
+
+
 
 

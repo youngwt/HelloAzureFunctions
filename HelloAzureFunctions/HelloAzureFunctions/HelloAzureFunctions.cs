@@ -24,11 +24,13 @@ namespace HelloAzureFunctions
 
             string responseMessage = myDeserializedClass == null ?
                 "Did not serialise the request correctly. No zen for you today" :
-                myDeserializedClass.zen;
+                $"Thankyou for contributing, {myDeserializedClass.pusher.name}";
 
             return new OkObjectResult(responseMessage);
         }
     }
 }
+
+
 
 

@@ -1,7 +1,4 @@
-﻿using System;
-
-[Serializable]
-public class Repository
+﻿public class Repository
 {
     public int id { get; set; }
     public string node_id { get; set; }
@@ -10,7 +7,7 @@ public class Repository
     public bool @private { get; set; }
     public Owner owner { get; set; }
     public string html_url { get; set; }
-    public string description { get; set; }
+    public object description { get; set; }
     public bool fork { get; set; }
     public string url { get; set; }
     public string forks_url { get; set; }
@@ -49,9 +46,9 @@ public class Repository
     public string labels_url { get; set; }
     public string releases_url { get; set; }
     public string deployments_url { get; set; }
-    public DateTime created_at { get; set; }
+    public int created_at { get; set; }
     public DateTime updated_at { get; set; }
-    public DateTime pushed_at { get; set; }
+    public int pushed_at { get; set; }
     public string git_url { get; set; }
     public string ssh_url { get; set; }
     public string clone_url { get; set; }
@@ -71,11 +68,15 @@ public class Repository
     public bool archived { get; set; }
     public bool disabled { get; set; }
     public int open_issues_count { get; set; }
-    public License license { get; set; }
+    public object license { get; set; }
     public int forks { get; set; }
     public int open_issues { get; set; }
     public int watchers { get; set; }
     public string default_branch { get; set; }
+    public int stargazers { get; set; }
+    public string master_branch { get; set; }
 }
+
+
 
 

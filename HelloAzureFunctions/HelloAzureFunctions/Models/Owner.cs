@@ -1,8 +1,9 @@
-﻿using System;
-
-[Serializable]
+﻿
+//Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 public class Owner
 {
+    public string name { get; set; }
+    public string email { get; set; }
     public string login { get; set; }
     public int id { get; set; }
     public string node_id { get; set; }
@@ -22,5 +23,7 @@ public class Owner
     public string type { get; set; }
     public bool site_admin { get; set; }
 }
+
+
 
 
