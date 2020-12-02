@@ -1,7 +1,5 @@
 using System;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +11,7 @@ using NUnit.Framework;
 
 namespace HelloAzureFunctionsTests
 {
+    [TestFixture]
     public class FunctionTests
     {
         Mock<ILogger> _logger;
