@@ -1,4 +1,6 @@
-﻿public class Repository
+﻿using System;
+
+public class Repository
 {
     public int id { get; set; }
     public string node_id { get; set; }

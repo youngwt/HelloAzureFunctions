@@ -31,11 +31,11 @@ namespace HelloAzureFunctionsTests
         }
 
         [TestCase("", "Did not serialise the request correctly. No zen for you today")]
-        [TestCase("Responsive is better than fast", "Responsive is better than fast")]
-        public async Task AzureFunction_TestZenMessage(string zen, string expected)
+        [TestCase("Bob Smith", "Thankyou for contributing, Bob Smith")]
+        public async Task AzureFunction_TestZenMessage(string pusherName, string expected)
         {
             // Arrange
-            var request = CreateHttpRequest(zen);
+            var request = CreateHttpRequest(pusherName);
 
             // the following log mock verification code was from an answer from SO
             // https://stackoverflow.com/questions/52707702/how-do-you-mock-ilogger-loginformation
@@ -69,15 +69,16 @@ namespace HelloAzureFunctionsTests
 
         }
 
-        private HttpRequest CreateHttpRequest(string zen = "")
+        private HttpRequest CreateHttpRequest(string pusherName = "")
         {
             var context = new DefaultHttpContext();
             var request = context.Request;
 
-            if(!string.IsNullOrEmpty(zen))
+            if(!string.IsNullOrEmpty(pusherName))
             {
                 var root = new Root();
-                root.zen = zen;
+                root.pusher = new Pusher();
+                root.pusher.name = pusherName;
 
                 request.Body = SerializeToStream(root);
             }

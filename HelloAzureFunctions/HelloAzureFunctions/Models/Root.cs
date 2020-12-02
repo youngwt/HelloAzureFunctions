@@ -1,4 +1,6 @@
-﻿public class Root
+﻿using System.Collections.Generic;
+
+public class Root
 {
     public string @ref { get; set; }
     public string before { get; set; }
