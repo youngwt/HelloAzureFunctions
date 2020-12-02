@@ -38,6 +38,12 @@ stages:
           $(workingDirectory)/*.csproj
         arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
 
+    - task: VSTest@2
+      displayName: 'Test'
+      inputs:
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
